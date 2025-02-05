@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
- public class ReplayDeliveryTest {
+public class ReplayDeliveryTest {
 
     @BeforeEach
     void setup() {open("http://localhost:9999"); }
@@ -51,4 +51,3 @@ import static com.codeborne.selenide.Selenide.open;
                 .shouldBe(visible);
     }
 }
-
