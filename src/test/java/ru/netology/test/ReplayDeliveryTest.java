@@ -2,20 +2,19 @@ package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import ru.netology.data.DataGenerator;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
-import ru.netology.data.DataGenerator;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ReplayDeliveryTest {
 
     @BeforeEach
-    void setup() {
+    public void setUp() {
         open("http://localhost:9999");
     }
 
@@ -29,12 +28,11 @@ public class ReplayDeliveryTest {
         SelenideLogger.removeListener("allure");
     }
 
-
     @Test
-    @DisplayName("Should successful plan a meeting")
-    public void shouldSuccessfulPlanMeeting() {
+    @DisplayName("Should successful plan and replan meeting")
+    public void shouldSuccessfulPlanAndReplanMeeting() {
         var validUser = DataGenerator.Registration.generateUser("ru");
-        var daysToAddForFirstMeeting = 4;
+        var daysToAddForFirstMeeting = 3;
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
