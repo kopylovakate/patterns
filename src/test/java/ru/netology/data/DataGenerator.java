@@ -12,8 +12,9 @@ public class DataGenerator {
     private DataGenerator() {
     }
 
-    public static String generateData(int shift) {
-        return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    public static String generateDate(int shift) {
+        return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy",
+                new Locale("ru")));
     }
 
     public static String generateCity() {
