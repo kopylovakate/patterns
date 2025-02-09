@@ -6,14 +6,14 @@ import lombok.Value;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Random;
 
 public class DataGenerator {
     private DataGenerator() {
     }
 
-    public static String generateDate(int shift) {
-        return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy",
-                new Locale("ru")));
+    public static String generateData(int shift) {
+        return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     public static String generateCity() {
@@ -27,8 +27,7 @@ public class DataGenerator {
                 "Омск", "Оренбург", "Орёл", "Пенза", "Псков", "Ростов-на-Дону", "Рязань", "Самара", "Саратов", "Южно-Сахалинск",
                 "Екатеринбург", "Смоленск", "Тамбов", "Тверь", "Томск", "Тула", "Тюмень", "Ульяновск", "Челябинск", "Ярославль",
                 "Санкт-Петербург", "Севастополь", "Биробиджан", "Нарьян-Мар", "Ханты-Мансийск", "Анадырь", "Салехард"};
-        int item = (int) (Math.random() * cities.length);
-        return cities[item];
+        return cities[new Random().nextInt(cities.length)];
     }
 
     public static String generateName(String locale) {
@@ -42,11 +41,12 @@ public class DataGenerator {
     }
 
     public static class Registration {
-        private Registration() {}
+        private Registration() {
+        }
+
         public static UserInfo generateUser(String locale) {
             return new UserInfo(generateCity(), generateName(locale), generatePhone(locale));
         }
-
     }
 
     @Value
