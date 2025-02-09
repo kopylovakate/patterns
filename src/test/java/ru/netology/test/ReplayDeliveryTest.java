@@ -2,6 +2,7 @@ package ru.netology.test;
 
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 import ru.netology.data.DataGenerator;
@@ -53,7 +54,7 @@ public class ReplayDeliveryTest {
                 .shouldBe(visible);
 
         $("[data-test-id='date'] input").press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        $("[data-test-id='date'] input").setValue((String) secondMeetingDate);
+        $("[data-test-id='date'] input").setValue(secondMeetingDate);
         $(Selectors.byText("Запланировать")).click();
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"))
